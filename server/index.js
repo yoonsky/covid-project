@@ -16,8 +16,9 @@ app.use(bodyParser.urlencoded({ extended: true }));
 
 //covid 바이러스 공공데이터
 app.get("/covid", (req, res) => {
+  const { date } = req.query;
   console.log("running...");
-  covid19Data(({ covid } = {}) => {
+  covid19Data(date, ({ covid } = {}) => {
     return res.send(covid);
   });
 });

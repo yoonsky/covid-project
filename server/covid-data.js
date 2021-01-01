@@ -1,7 +1,7 @@
 const convert = require("xml-js");
 const request = require("request");
 
-const covid19Data = (callback) => {
+const covid19Data = (date, callback) => {
   const SERVICE_KEY =
     "cAVo5I1QPr87FxTakj9wUXtJQoL8Ji%2BfbNPlSY1CeGy39axWVjmrvLw8uxpBWBmPuevW4W9uLBPhwVD27b0V3g%3D%3D";
   var url =
@@ -24,7 +24,7 @@ const covid19Data = (callback) => {
     "&" +
     encodeURIComponent("endCreateDt") +
     "=" +
-    encodeURIComponent("20210102"); /* */
+    encodeURIComponent(date); /* */
   var requestUrl = url + queryParams;
 
   console.log(requestUrl);

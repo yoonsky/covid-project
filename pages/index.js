@@ -1,19 +1,19 @@
 import Head from "next/head";
 import styles from "../styles/Home.module.css";
 import { useEffect } from "react";
-import { useDispatch } from "react-redux";
-import { actions, Types } from "../client/main/state";
+import { useDispatch, useSelector } from "react-redux";
+import { actions, Types } from "../client/main/state/index";
 import moment from "moment";
 
-// console.log(moment().format("YYYYMMDD"));
-
 export default function Home() {
-  // const dispatch = useDispatch();
+  let date = moment().format("YYYYMMDD");
+  const dispatch = useDispatch();
+  const { totalData } = useSelector((state) => state.main);
 
   useEffect(() => {
     console.log("index rendering...");
-    // dispatch(actions.fetchTotalData('totalData',));
-  }, []);
+    dispatch(actions.fetchTotalData(date));
+  }, [totalData, dispatch]);
 
   return (
     <div className={styles.container}>

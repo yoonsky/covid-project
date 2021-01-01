@@ -1,28 +1,37 @@
 import axios from "axios";
-const API_HOST = process.env.API_HOST;
+const API_HOST = "http://localhost:5000/";
 
-export default function callApi({ method = "get", url, data, params }) {
+/**
+ *
+ * @param {object} param
+ * @param {'get' | 'post' =} param.method
+ * @param {string} param.url
+ * @param {object=} param.params
+ * @param {object=} param.data
+ */
+
+export function callApi({ method = "get", url, data, params }) {
   return axios({
     method,
     url,
     data,
     params,
-    baseUrl: API_HOST,
+    baseURL: API_HOST,
     withCredentials: true,
   }).then((response) => {
-    const { resultCode, resultMsg } = response.data;
-    const parseCode = parseInt(resultCode);
-    if (parseCode > 0) {
+    const { resultCode, resultMsg } = response.data.response.header;
+    if (resultCode > 0) {
       console.error(resultMsg);
     }
     return {
-      Success: parseCode === resultcode.Success, //boolean value
+      Success: resultCode === ResultCode.Success, //boolean value
       resultCode,
-      data: response.data,
+      resultMsg,
+      data: response.data.response,
     };
   });
 }
 
-const resultcode = {
+export const ResultCode = {
   Success: 0,
 };
