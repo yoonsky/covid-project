@@ -11,15 +11,17 @@ app.use(
     credentials: true,
   })
 );
+app.use(bodyParser.json());
 app.use(bodyParser.urlencoded({ extended: true }));
 
-app.post("/", (req, res) => {
+app.get("/", (req, res) => {
   console.log("running...");
   covid19Data(({ covid } = {}) => {
     return res.send(covid);
   });
 });
 //포트넘버
+
 const PORT = 5000;
 app.listen(PORT, () => {
   console.log(`server running on port ${PORT}`);

@@ -8,7 +8,9 @@ export default function Home() {
   const SERVER_URL = process.env.SERVER_PORT;
 
   const fetchApi = () => {
-    axios.post("/").then((response) => console.log(response.data));
+    axios
+      .get("http://localhost:5000/")
+      .then((response) => console.log(response.data));
   };
 
   useEffect(() => {
