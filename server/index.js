@@ -1,6 +1,8 @@
 const express = require("express");
 const app = express();
 const cors = require("cors");
+const bodyParser = require("body-parser");
+const covid19Data = require("./covid-data");
 
 //CORS 설정
 app.use(
@@ -9,12 +11,14 @@ app.use(
     credentials: true,
   })
 );
+app.use(bodyParser.urlencoded({ extended: true }));
 
-// 연결확인
-app.get("/", (req, res) => {
-  res.send("hello world");
+app.post("/", (req, res) => {
+  console.log("running...");
+  covid19Data(({ covid } = {}) => {
+    return res.send(covid);
+  });
 });
-
 //포트넘버
 const PORT = 5000;
 app.listen(PORT, () => {
