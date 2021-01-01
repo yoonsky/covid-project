@@ -11,13 +11,14 @@ export default function callApi({ method = "get", url, data, params }) {
     withCredentials: true,
   }).then((response) => {
     const { resultCode, resultMsg } = response.data;
-    if (resultCode > 0) {
+    const parseCode = parseInt(resultCode);
+    if (parseCode > 0) {
       console.error(resultMsg);
     }
     return {
-      Success: resultCode === resultcode.Success, //boolean value
+      Success: parseCode === resultcode.Success, //boolean value
       resultCode,
-      data: response.data.data,
+      data: response.data,
     };
   });
 }

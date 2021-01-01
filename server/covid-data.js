@@ -19,12 +19,12 @@ const covid19Data = (callback) => {
     "&" +
     encodeURIComponent("startCreateDt") +
     "=" +
-    encodeURIComponent("20200310"); /* */
+    encodeURIComponent("20200101"); /* */
   queryParams +=
     "&" +
     encodeURIComponent("endCreateDt") +
     "=" +
-    encodeURIComponent("20200315"); /* */
+    encodeURIComponent("20210102"); /* */
   var requestUrl = url + queryParams;
 
   console.log(requestUrl);

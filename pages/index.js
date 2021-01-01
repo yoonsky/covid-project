@@ -1,21 +1,18 @@
 import Head from "next/head";
 import styles from "../styles/Home.module.css";
-import axios from "axios";
 import { useEffect } from "react";
+import { useDispatch } from "react-redux";
+import { actions, Types } from "../client/main/state";
+import moment from "moment";
+
+// console.log(moment().format("YYYYMMDD"));
 
 export default function Home() {
-  const SERVICE_KEY = process.env.SERVICE_KEY;
-  const SERVER_URL = process.env.SERVER_PORT;
-
-  const fetchApi = () => {
-    axios
-      .get("http://localhost:5000/")
-      .then((response) => console.log(response.data));
-  };
+  // const dispatch = useDispatch();
 
   useEffect(() => {
-    console.log("render");
-    fetchApi();
+    console.log("index rendering...");
+    // dispatch(actions.fetchTotalData('totalData',));
   }, []);
 
   return (
