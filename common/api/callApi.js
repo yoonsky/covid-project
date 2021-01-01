@@ -1,6 +1,8 @@
 import axios from "axios";
 const API_HOST = "http://localhost:5000/";
 
+// 본 api는 공공데이터 포털이 제공하는 방식에 맞춰져있음.
+
 /**
  *
  * @param {object} param
@@ -19,19 +21,17 @@ export function callApi({ method = "get", url, data, params }) {
     baseURL: API_HOST,
     withCredentials: true,
   }).then((response) => {
+    console.log(response.data.response);
     const { resultCode, resultMsg } = response.data.response.header;
-    if (resultCode > 0) {
+    console.log(resultCode._text);
+    if (resultCode._text !== "00") {
       console.error(resultMsg);
     }
     return {
-      Success: resultCode === ResultCode.Success, //boolean value
+      Success: resultCode._text === "00",
       resultCode,
       resultMsg,
       data: response.data.response,
     };
   });
 }
-
-export const ResultCode = {
-  Success: 0,
-};

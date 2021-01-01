@@ -10,10 +10,13 @@ export default function Home() {
   const dispatch = useDispatch();
   const { totalData } = useSelector((state) => state.main);
 
+  console.log(totalData);
+  //데이터 잘 가져오는중.
+
   useEffect(() => {
     console.log("index rendering...");
     dispatch(actions.fetchTotalData(date));
-  }, [totalData, dispatch]);
+  }, [dispatch]);
 
   return (
     <div className={styles.container}>

@@ -7,8 +7,9 @@ function* fetchTotalData({ date }) {
     url: "/covid",
     data: { date },
   });
-  // console.log(data);
+  console.log(Success);
   if (Success && data) {
+    console.log("성공");
     yield put(actions.setValue("totalData", data.body.items));
   }
 }
