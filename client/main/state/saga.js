@@ -10,7 +10,7 @@ function* fetchTotalData({ today, yesterday }) {
   });
   console.log("Success is", Success);
   if (Success && data) {
-    yield put(actions.setValue("totalData", data.body.items));
+    yield put(actions.setValue("totalData", data.body.items.item));
   }
 }
 

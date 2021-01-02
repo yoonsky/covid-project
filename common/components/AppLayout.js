@@ -1,4 +1,4 @@
-import { Menu } from "antd";
+import { Col, Menu } from "antd";
 import {
   AreaChartOutlined,
   BellOutlined,
@@ -10,27 +10,24 @@ import Link from "next/link";
 
 const AppLayout = ({ children }) => {
   return (
-    <div
+    <Col
       style={{
-        margin: "0 auto",
-        background: "#ababab",
-        display: "flex",
-        flexDirection: "column",
+        width: "100%",
+        maxWidth: "800px",
       }}
     >
       <Menu
         onClick={() => {}}
         mode="horizontal"
-        style={{ display: "flex", justifyContent: "space-around" }}
+        style={{
+          display: "flex",
+          justifyContent: "space-around",
+          fontWeight: "bold",
+        }}
       >
         <Menu.Item key="situation" icon={<AreaChartOutlined />}>
           <Link href="/">
             <a>국내/세계현황</a>
-          </Link>
-        </Menu.Item>
-        <Menu.Item key="notice" icon={<BellOutlined />}>
-          <Link href="/notice">
-            <a>공지사항</a>
           </Link>
         </Menu.Item>
         <Menu.Item key="room" icon={<CheckCircleOutlined />}>
@@ -38,15 +35,20 @@ const AppLayout = ({ children }) => {
             <a>선별진료소</a>
           </Link>
         </Menu.Item>
+        <Menu.Item key="notice" icon={<BellOutlined />}>
+          <Link href="/notice">
+            <a>공지사항</a>
+          </Link>
+        </Menu.Item>
         <Menu.Item key="qr" icon={<QrcodeOutlined />}>
           <Link href="/mypage">
-            <a> QR/동선체크</a>
+            <a>내 QR · 동선체크</a>
           </Link>
         </Menu.Item>
       </Menu>
 
       <div>{children}</div>
-    </div>
+    </Col>
   );
 };
 

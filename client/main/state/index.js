@@ -21,7 +21,7 @@ export const actions = {
 };
 
 const INITIAL_STATE = {
-  totalData: undefined,
+  totalData: [],
   // 국가 리스트
   // 확진자 수 (당일, 누적)
   // 검사자 수
