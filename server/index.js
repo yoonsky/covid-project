@@ -15,10 +15,10 @@ app.use(bodyParser.json());
 app.use(bodyParser.urlencoded({ extended: true }));
 
 //covid 바이러스 공공데이터
-app.get("/covid", (req, res) => {
-  const { date } = req.query;
+app.post("/covid", (req, res) => {
+  const { today, yesterday } = req.body;
   console.log("running...");
-  covid19Data(date, ({ covid } = {}) => {
+  covid19Data(today, yesterday, ({ covid } = {}) => {
     return res.send(covid);
   });
 });

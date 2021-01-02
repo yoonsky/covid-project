@@ -21,9 +21,7 @@ export function callApi({ method = "get", url, data, params }) {
     baseURL: API_HOST,
     withCredentials: true,
   }).then((response) => {
-    console.log(response.data.response);
     const { resultCode, resultMsg } = response.data.response.header;
-    console.log(resultCode._text);
     if (resultCode._text !== "00") {
       console.error(resultMsg);
     }

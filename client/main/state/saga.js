@@ -2,14 +2,14 @@ import { all, call, put, takeEvery } from "redux-saga/effects";
 import { Types, actions } from "./index";
 import { callApi } from "../../../common/api/callApi";
 
-function* fetchTotalData({ date }) {
+function* fetchTotalData({ today, yesterday }) {
   const { Success, data } = yield call(callApi, {
+    method: "post",
     url: "/covid",
-    data: { date },
+    data: { today, yesterday },
   });
-  console.log(Success);
+  console.log("Success is", Success);
   if (Success && data) {
-    console.log("성공");
     yield put(actions.setValue("totalData", data.body.items));
   }
 }

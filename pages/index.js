@@ -6,16 +6,17 @@ import { actions, Types } from "../client/main/state/index";
 import moment from "moment";
 
 export default function Home() {
-  let date = moment().format("YYYYMMDD");
+  let today = moment().format("YYYYMMDD");
+  let yesterday = moment().subtract(7, "days").format("YYYYMMDD");
   const dispatch = useDispatch();
   const { totalData } = useSelector((state) => state.main);
 
-  console.log(totalData);
   //데이터 잘 가져오는중.
+  console.log("total", totalData);
 
   useEffect(() => {
     console.log("index rendering...");
-    dispatch(actions.fetchTotalData(date));
+    dispatch(actions.fetchTotalData({ today, yesterday }));
   }, [dispatch]);
 
   return (

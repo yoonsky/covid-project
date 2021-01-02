@@ -13,9 +13,10 @@ export const Types = {
 
 export const actions = {
   setValue: createSetValueAction(Types.SetValue),
-  fetchTotalData: (date) => ({
+  fetchTotalData: ({ today, yesterday }) => ({
     type: Types.FetchTotalData,
-    date,
+    today,
+    yesterday,
   }),
 };
 
