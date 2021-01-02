@@ -9,7 +9,7 @@ import Main from "../client/main/containers/Main";
 
 export default function Home() {
   let today = moment().format("YYYYMMDD");
-  let yesterday = moment().subtract(7, "days").format("YYYYMMDD");
+  let yesterday = moment().subtract(8, "days").format("YYYYMMDD");
   const dispatch = useDispatch();
   const { totalData } = useSelector((state) => state.main);
 

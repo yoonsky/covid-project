@@ -7,6 +7,7 @@ import {
 } from "@ant-design/icons";
 import React from "react";
 import Link from "next/link";
+import Text from "antd/lib/typography/Text";
 
 const AppLayout = ({ children }) => {
   return (
@@ -16,6 +17,7 @@ const AppLayout = ({ children }) => {
         maxWidth: "800px",
       }}
     >
+      <Text mark>코로나19 국내현황(COVID-19)</Text>
       <Menu
         onClick={() => {}}
         mode="horizontal"
@@ -27,7 +29,7 @@ const AppLayout = ({ children }) => {
       >
         <Menu.Item key="situation" icon={<AreaChartOutlined />}>
           <Link href="/">
-            <a>국내/세계현황</a>
+            <a>국내현황</a>
           </Link>
         </Menu.Item>
         <Menu.Item key="room" icon={<CheckCircleOutlined />}>
@@ -37,7 +39,7 @@ const AppLayout = ({ children }) => {
         </Menu.Item>
         <Menu.Item key="notice" icon={<BellOutlined />}>
           <Link href="/notice">
-            <a>공지사항</a>
+            <a>공지사항 · 소식</a>
           </Link>
         </Menu.Item>
         <Menu.Item key="qr" icon={<QrcodeOutlined />}>
@@ -46,7 +48,6 @@ const AppLayout = ({ children }) => {
           </Link>
         </Menu.Item>
       </Menu>
-
       <div>{children}</div>
     </Col>
   );
