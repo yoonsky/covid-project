@@ -4,6 +4,8 @@ import { useEffect } from "react";
 import { useDispatch, useSelector } from "react-redux";
 import { actions, Types } from "../client/main/state/index";
 import moment from "moment";
+import AppLayout from "../common/components/AppLayout";
+import Main from "../client/main/containers/Main";
 
 export default function Home() {
   let today = moment().format("YYYYMMDD");
@@ -26,7 +28,11 @@ export default function Home() {
         <link rel="icon" href="/favicon.ico" />
       </Head>
 
-      <main className={styles.main}>hello client index!</main>
+      <main className={styles.main}>
+        <AppLayout>
+          <Main />
+        </AppLayout>
+      </main>
 
       <footer className={styles.footer}></footer>
     </div>
