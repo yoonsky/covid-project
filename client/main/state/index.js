@@ -9,12 +9,18 @@ import {
 export const Types = {
   SetValue: "main/SetValue",
   FetchTotalData: "main/FetchTotalData",
+  FetchSidoData: "main/FetchSidoData",
 };
 
 export const actions = {
   setValue: createSetValueAction(Types.SetValue),
-  fetchTotalData: ({ today, yesterday }) => ({
+  fetchTotalData: ({ today, eigthDayAgo }) => ({
     type: Types.FetchTotalData,
+    today,
+    eigthDayAgo,
+  }),
+  fetchSidoData: ({ today, yesterday }) => ({
+    type: Types.FetchSidoData,
     today,
     yesterday,
   }),
@@ -22,13 +28,7 @@ export const actions = {
 
 const INITIAL_STATE = {
   totalData: [],
-  // 국가 리스트
-  // 확진자 수 (당일, 누적)
-  // 검사자 수
-  // 사망자 수
-  // 검사 진행중 수
-  // 격리해제 수
-  // 치료중 환자 수
+  sidoData: [],
 };
 
 const reducer = createReducer(INITIAL_STATE, {

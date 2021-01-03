@@ -1,5 +1,6 @@
-import { Col, Row } from "antd";
+import { Col, Row, Typography } from "antd";
 import Stat from "../components/statistic";
+import Chart from "../components/charts";
 import React from "react";
 import { useSelector } from "react-redux";
 
@@ -11,7 +12,18 @@ const colors = {
 };
 
 const Main = () => {
-  const { totalData } = useSelector((state) => state.main);
+  const { totalData, sidoData } = useSelector((state) => state.main);
+
+  let sidoList = [];
+
+  sidoData.forEach((item) => {
+    sidoList.push({
+      title: item.gubun._text,
+      value: item.incDec._text,
+      increase: "-",
+      color: colors.red,
+    });
+  });
 
   const List = [
     {
@@ -42,6 +54,7 @@ const Main = () => {
 
   return (
     <>
+      <Typography.Text mark>[국내 코로나 바이러스 현상황]</Typography.Text>
       <Col style={{ border: "1px solid #e9e9e9" }}>
         <Row justify="space-around" style={{ margin: "10px 0", width: "100%" }}>
           {List.map((item) => (
@@ -55,7 +68,26 @@ const Main = () => {
           ))}
         </Row>
       </Col>
-      <div>여기에 차트 만들건데... 하...</div>
+      <br />
+      <Typography.Text mark>
+        [당일 시 도별 코로나 바이러스 확진환자 수]
+      </Typography.Text>
+      <Col style={{ border: "1px solid #e9e9e9" }}>
+        <Row style={{ margin: "10px 0", width: "100%" }}>
+          {sidoList.map((item) => (
+            <Stat
+              key={item.title}
+              title={item.title}
+              value={item.value}
+              increase={item.increase}
+              color={item.color}
+            />
+          ))}
+        </Row>
+      </Col>
+      <div>
+        <Chart totalData={totalData} />
+      </div>
     </>
   );
 };

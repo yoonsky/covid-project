@@ -1,7 +1,16 @@
 import React from "react";
+import LoginForm from "./LoginForm";
 
 const Main = () => {
-  return <div>여기는 동선체크</div>;
+  return (
+    <div
+      style={{
+        border: "1px solid #ababab",
+      }}
+    >
+      <LoginForm />
+    </div>
+  );
 };
 
 export default Main;

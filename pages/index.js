@@ -9,16 +9,20 @@ import Main from "../client/main/containers/Main";
 
 export default function Home() {
   let today = moment().format("YYYYMMDD");
-  let yesterday = moment().subtract(8, "days").format("YYYYMMDD");
+  let eigthDayAgo = moment().subtract(8, "days").format("YYYYMMDD");
+  let yesterday = moment().subtract(1, "days").format("YYYYMMDD");
+
   const dispatch = useDispatch();
-  const { totalData } = useSelector((state) => state.main);
+  const { totalData, sidoData } = useSelector((state) => state.main);
 
   //데이터 잘 가져오는중.
   console.log("total", totalData);
+  console.log("sido", sidoData);
 
   useEffect(() => {
     console.log("index rendering...");
-    dispatch(actions.fetchTotalData({ today, yesterday }));
+    dispatch(actions.fetchTotalData({ today, eigthDayAgo }));
+    dispatch(actions.fetchSidoData({ today, yesterday }));
   }, [dispatch]);
 
   return (

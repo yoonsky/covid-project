@@ -4,6 +4,7 @@ const cors = require("cors");
 const bodyParser = require("body-parser");
 const covid19Data = require("./covid-data");
 const roomData = require("./room");
+const sidoData = require("./sidoData");
 
 //CORS 설정
 app.use(
@@ -17,10 +18,19 @@ app.use(bodyParser.urlencoded({ extended: true }));
 
 //covid 바이러스 공공데이터
 app.post("/api/covid", (req, res) => {
+  const { today, eigthDayAgo } = req.body;
+  console.log("running...");
+  covid19Data(today, eigthDayAgo, ({ covid } = {}) => {
+    return res.send(covid);
+  });
+});
+
+//전국 지역별 확진환자 변화량
+app.post("/api/sido", (req, res) => {
   const { today, yesterday } = req.body;
   console.log("running...");
-  covid19Data(today, yesterday, ({ covid } = {}) => {
-    return res.send(covid);
+  sidoData(today, yesterday, ({ sido } = {}) => {
+    return res.send(sido);
   });
 });
 

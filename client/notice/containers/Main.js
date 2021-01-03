@@ -1,7 +1,12 @@
 import React from "react";
+import NoticeList from "./NoticeList";
 
 const Main = () => {
-  return <div>여기는 공지사항</div>;
+  return (
+    <div>
+      <NoticeList />
+    </div>
+  );
 };
 
 export default Main;
