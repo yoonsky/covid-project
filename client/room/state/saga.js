@@ -2,18 +2,17 @@ import { all, call, put, takeEvery } from "redux-saga/effects";
 import { Types, actions } from "./index";
 import { callApi } from "../../../common/api/callApi";
 
-function* fetchTotalData({ today, yesterday }) {
+function* fetchRoomData() {
   const { Success, data } = yield call(callApi, {
     method: "post",
-    url: "/api/covid",
-    data: { today, yesterday },
+    url: "/api/room",
   });
   console.log("Success is", Success);
   if (Success && data) {
-    yield put(actions.setValue("totalData", data.body.items.item));
+    yield put(actions.setValue("roomData", data.body));
   }
 }
 
-export default function* mainSaga() {
-  yield all([takeEvery(Types.FetchTotalData, fetchTotalData)]);
+export default function* roomSaga() {
+  yield all([takeEvery(Types.FetchRoomData, fetchRoomData)]);
 }

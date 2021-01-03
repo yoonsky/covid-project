@@ -7,12 +7,16 @@ import createSagaMiddleware from "redux-saga";
 import mainReducer from "../client/main/state/";
 import mainSaga from "../client/main/state/saga";
 
+import roomReducer from "../client/room/state/";
+import roomSaga from "../client/room/state/saga";
+
 export const reducer = combineReducers({
   main: mainReducer,
+  room: roomReducer,
 });
 
 export function* rootSaga() {
-  yield all([mainSaga()]);
+  yield all([mainSaga(), roomSaga()]);
 }
 
 const configureStore = () => {

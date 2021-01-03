@@ -1,13 +1,9 @@
 import Head from "next/head";
 import styles from "../styles/Home.module.css";
-import { useEffect } from "react";
+import AppLayout from "../common/components/AppLayout";
+import Main from "../client/mypage/containers/Main";
 
-export default function MyPage() {
-  useEffect(() => {
-    console.log("render");
-    // fetchApi();
-  }, []);
-
+export default function Mypage() {
   return (
     <div className={styles.container}>
       <Head>
@@ -15,7 +11,11 @@ export default function MyPage() {
         <link rel="icon" href="/favicon.ico" />
       </Head>
 
-      <main className={styles.main}>hello client myPage!</main>
+      <main className={styles.main}>
+        <AppLayout>
+          <Main />
+        </AppLayout>
+      </main>
 
       <footer className={styles.footer}></footer>
     </div>

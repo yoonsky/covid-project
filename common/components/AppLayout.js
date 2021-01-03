@@ -8,6 +8,7 @@ import {
 import React from "react";
 import Link from "next/link";
 import Text from "antd/lib/typography/Text";
+import CarouselCompo from "./Carousel";
 
 const AppLayout = ({ children }) => {
   return (
@@ -17,6 +18,7 @@ const AppLayout = ({ children }) => {
         maxWidth: "800px",
       }}
     >
+      <CarouselCompo />
       <Text mark>코로나19 국내현황(COVID-19)</Text>
       <Menu
         onClick={() => {}}

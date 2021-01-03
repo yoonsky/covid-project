@@ -3,6 +3,7 @@ const app = express();
 const cors = require("cors");
 const bodyParser = require("body-parser");
 const covid19Data = require("./covid-data");
+const roomData = require("./room");
 
 //CORS 설정
 app.use(
@@ -15,7 +16,7 @@ app.use(bodyParser.json());
 app.use(bodyParser.urlencoded({ extended: true }));
 
 //covid 바이러스 공공데이터
-app.post("/covid", (req, res) => {
+app.post("/api/covid", (req, res) => {
   const { today, yesterday } = req.body;
   console.log("running...");
   covid19Data(today, yesterday, ({ covid } = {}) => {
@@ -23,6 +24,15 @@ app.post("/covid", (req, res) => {
   });
 });
 
+//병원정보 api 요청
+app.post("/api/room", (req, res) => {
+  console.log("running...");
+  roomData(({ room } = {}) => {
+    return res.send(room);
+  });
+});
+
+//서버 연결 확인용
 app.get("/", (req, res) => {
   res.send("hello world!");
 });
