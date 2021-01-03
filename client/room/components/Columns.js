@@ -3,11 +3,6 @@ import { QuestionCircleOutlined } from "@ant-design/icons";
 
 export const Columns = [
   {
-    title: "연번",
-    dataIndex: "order",
-    key: "order",
-  },
-  {
     title: "시도명",
     dataIndex: "sidoNm",
     key: "sidoNm",

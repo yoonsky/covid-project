@@ -13,16 +13,17 @@ export const Types = {
 
 export const actions = {
   setValue: createSetValueAction(Types.SetValue),
-  fetchRoomData: ({ page, spclKey, roomData }) => ({
+  fetchRoomData: ({ page, spclKey }) => ({
     type: Types.FetchRoomData,
     page,
-    roomData,
     spclKey,
   }),
 };
 
 const INITIAL_STATE = {
-  roomData: [],
+  roomData: [], //모든 데이터
+  dataLength: 0, //페이지 수
+  loading: true, //로딩값
 };
 
 const reducer = createReducer(INITIAL_STATE, {

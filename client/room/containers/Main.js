@@ -7,49 +7,56 @@ import { actions } from "../state/index";
 import { Columns } from "../components/Columns";
 
 const Main = () => {
-  const { roomData } = useSelector((state) => state.room);
-  const [pageNumber, setPageNumber] = useState(1);
+  const { roomData, dataLength, loading } = useSelector((state) => state.room);
   const [selectValue, setSelectValue] = useState("A0");
   const dispatch = useDispatch();
 
-  const data = [];
-  let i = 1;
-  roomData.length !== 0 &&
-    roomData.forEach((item) => {
-      //가져온데이터 배열에 정렬
-      data.push({
-        key: i,
-        order: i++,
-        sidoNm: item.sidoNm._text,
-        sgguNm: item.sgguNm._text,
-        yadmNm: item.yadmNm._text,
-        telno: item.telno._text,
-        hospTyTpCd: item.hospTyTpCd._text,
-      });
-    });
+  console.log(dataLength);
 
-  console.log(data);
+  let pageLength = Math.ceil(dataLength / 10);
+
+  console.log(selectValue, "roomData", roomData);
+
+  let data = [];
+  let i = 1;
+
+  roomData.forEach((item) => {
+    //가져온데이터 배열에 정렬
+    data.push({
+      key: i++,
+      sidoNm: item.sidoNm._text,
+      sgguNm: item.sgguNm._text,
+      yadmNm: item.yadmNm._text,
+      telno: item.telno._text,
+      hospTyTpCd: item.hospTyTpCd ? item.hospTyTpCd._text : "-",
+    });
+  });
 
   const nextPage = (e) => {
-    //페이지네이션 함수
-    console.log(e);
-    if (pageNumber < e) {
-      setPageNumber(pageNumber + 1);
-      dispatch(
-        actions.fetchRoomData({ page: e, spclKey: selectValue, roomData })
-      );
-    }
+    dispatch(actions.fetchRoomData({ page: e, spclKey: selectValue }));
   };
 
   const selectOption = (value) => {
+    //옵션을 선택했을때
     setSelectValue(value);
+    //페이지 초기화
+    dispatch(
+      actions.fetchRoomData({
+        page: 1,
+        spclKey: value,
+      })
+    );
   };
 
   useEffect(() => {
+    //첫 마운트
+    setSelectValue("A0");
     dispatch(
-      actions.fetchRoomData({ page: 1, spclKey: selectValue, roomData })
+      actions.fetchRoomData({
+        page: 1,
+        spclKey: selectValue,
+      })
     );
-    //페이지 및 코드의 기본값은 1과 A0로 설정
   }, []);
 
   return (
@@ -74,11 +81,14 @@ const Main = () => {
         />
       </Row>
       <Table
+        bordered
+        loading={loading}
         columns={Columns}
         dataSource={data}
         pagination={{
           position: ["bottomCenter"],
           onChange: nextPage,
+          total: pageLength,
         }}
       />
     </>
