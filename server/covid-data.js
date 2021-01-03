@@ -40,7 +40,7 @@ const covid19Data = (today, yesterday, callback) => {
         let result = body;
         // console.log(`body data => ${result}`);
         let xmlToJson = convert.xml2json(result, { compact: true, spaces: 2 });
-        console.log(`xml to json => `);
+        console.log(`xml to json => covid-data running!`);
 
         callback({
           covid: xmlToJson,

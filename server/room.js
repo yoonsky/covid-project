@@ -38,7 +38,7 @@ const roomData = (page, spclKey, callback) => {
         let result = body;
         // console.log(`body data => ${result}`);
         let xmlToJson = convert.xml2json(result, { compact: true, spaces: 2 });
-        console.log(`xml to json => `);
+        console.log(`xml to json => Room running! `);
 
         callback({
           room: xmlToJson,

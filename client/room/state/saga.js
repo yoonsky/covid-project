@@ -1,4 +1,4 @@
-import { all, call, put, takeEvery } from "redux-saga/effects";
+import { all, call, put, takeLatest } from "redux-saga/effects";
 import { Types, actions } from "./index";
 import { callApi } from "../../../common/api/callApi";
 
@@ -18,5 +18,5 @@ function* fetchRoomData({ page, spclKey }) {
 }
 
 export default function* roomSaga() {
-  yield all([takeEvery(Types.FetchRoomData, fetchRoomData)]);
+  yield all([takeLatest(Types.FetchRoomData, fetchRoomData)]);
 }

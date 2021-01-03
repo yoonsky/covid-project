@@ -13,8 +13,6 @@ const Main = () => {
 
   console.log(dataLength);
 
-  let pageLength = Math.ceil(dataLength / 10);
-
   console.log(selectValue, "roomData", roomData);
 
   let data = [];
@@ -82,13 +80,14 @@ const Main = () => {
       </Row>
       <Table
         bordered
+        showSizeChanger={false}
         loading={loading}
         columns={Columns}
         dataSource={data}
         pagination={{
           position: ["bottomCenter"],
           onChange: nextPage,
-          total: pageLength,
+          total: dataLength,
         }}
       />
     </>
