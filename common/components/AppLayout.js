@@ -45,11 +45,6 @@ const AppLayout = ({ children }) => {
             <a>공지사항 · 소식</a>
           </Link>
         </Menu.Item>
-        <Menu.Item key="qr" icon={<QrcodeOutlined />}>
-          <Link href="/mypage">
-            <a>내 QR · 동선체크</a>
-          </Link>
-        </Menu.Item>
       </Menu>
       <div>{children}</div>
     </Col>

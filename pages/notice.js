@@ -7,7 +7,7 @@ export default function Notice() {
   return (
     <div className={styles.container}>
       <Head>
-        <title>Covid 19</title>
+        <title>코로나 바이러스(COVID-19)</title>
         <link rel="icon" href="/favicon.ico" />
       </Head>
 

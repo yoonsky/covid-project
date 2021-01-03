@@ -70,7 +70,7 @@ const Main = () => {
       </Col>
       <br />
       <Typography.Text mark>
-        [당일 시 도별 코로나 바이러스 확진환자 수]
+        [당일 / 시 도별 코로나 바이러스 확진환자 수]
       </Typography.Text>
       <Col style={{ border: "1px solid #e9e9e9" }}>
         <Row style={{ margin: "10px 0", width: "100%" }}>
