@@ -13,7 +13,11 @@ export const Types = {
 
 export const actions = {
   setValue: createSetValueAction(Types.SetValue),
-  fetchRoomData: () => ({ type: Types.FetchRoomData }),
+  fetchRoomData: ({ page, roomData }) => ({
+    type: Types.FetchRoomData,
+    page,
+    roomData,
+  }),
 };
 
 const INITIAL_STATE = {

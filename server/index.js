@@ -26,8 +26,9 @@ app.post("/api/covid", (req, res) => {
 
 //병원정보 api 요청
 app.post("/api/room", (req, res) => {
+  const { page } = req.body;
   console.log("running...");
-  roomData(({ room } = {}) => {
+  roomData(page, ({ room } = {}) => {
     return res.send(room);
   });
 });

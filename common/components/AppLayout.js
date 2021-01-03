@@ -19,7 +19,7 @@ const AppLayout = ({ children }) => {
       }}
     >
       <CarouselCompo />
-      <Text mark>코로나19 국내현황(COVID-19)</Text>
+      {/* <Text mark>코로나19 국내현황(COVID-19)</Text> */}
       <Menu
         onClick={() => {}}
         mode="horizontal"
@@ -27,6 +27,7 @@ const AppLayout = ({ children }) => {
           display: "flex",
           justifyContent: "space-around",
           fontWeight: "bold",
+          marginBottom: "20px",
         }}
       >
         <Menu.Item key="situation" icon={<AreaChartOutlined />}>

@@ -1,7 +1,7 @@
 const convert = require("xml-js");
 const request = require("request");
 
-const roomData = (callback) => {
+const roomData = (page, callback) => {
   const SERVICE_KEY =
     "cAVo5I1QPr87FxTakj9wUXtJQoL8Ji%2BfbNPlSY1CeGy39axWVjmrvLw8uxpBWBmPuevW4W9uLBPhwVD27b0V3g%3D%3D";
   var url =
@@ -9,7 +9,10 @@ const roomData = (callback) => {
   var queryParams =
     "?" + encodeURIComponent("ServiceKey") + `=${SERVICE_KEY}`; /* Service Key*/
   queryParams +=
-    "&" + encodeURIComponent("pageNo") + "=" + encodeURIComponent("2"); /* */
+    "&" +
+    encodeURIComponent("pageNo") +
+    "=" +
+    encodeURIComponent(`${page}`); /* */
   queryParams +=
     "&" +
     encodeURIComponent("numOfRows") +
