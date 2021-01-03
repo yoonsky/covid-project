@@ -13,10 +13,11 @@ export const Types = {
 
 export const actions = {
   setValue: createSetValueAction(Types.SetValue),
-  fetchRoomData: ({ page, roomData }) => ({
+  fetchRoomData: ({ page, spclKey, roomData }) => ({
     type: Types.FetchRoomData,
     page,
     roomData,
+    spclKey,
   }),
 };
 
