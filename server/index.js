@@ -48,7 +48,6 @@ app.get("/", (req, res) => {
   res.send("hello world!");
 });
 
-//포트넘버
 app.listen(80, () => {
   console.log(`server running on port ${PORT}`);
 });
