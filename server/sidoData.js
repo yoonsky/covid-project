@@ -19,7 +19,7 @@ const sidoData = (today, yesterday, callback) => {
     "&" +
     encodeURIComponent("startCreateDt") +
     "=" +
-    encodeURIComponent(yesterday); /* */
+    encodeURIComponent(today); /* */
   queryParams +=
     "&" +
     encodeURIComponent("endCreateDt") +
