@@ -1,4 +1,4 @@
-import { Row, Select, Table } from "antd";
+import { Row, Select, Table, Typography } from "antd";
 import Search from "antd/lib/input/Search";
 const { Option } = Select;
 import React, { useEffect, useState } from "react";
@@ -108,6 +108,9 @@ const Main = () => {
 
   return (
     <>
+      <Row justify="center">
+        <Typography.Title mark>hello</Typography.Title>
+      </Row>
       <Row>
         <Select
           defaultValue="A0"
