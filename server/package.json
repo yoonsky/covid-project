@@ -12,6 +12,6 @@
     "xml-js": "^1.6.11"
   },
   "scripts": {
-    "start":"node index.js"
+    "start":"node index"
   }
 }
