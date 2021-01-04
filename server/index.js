@@ -9,7 +9,7 @@ const sidoData = require("./sidoData");
 //CORS 설정
 app.use(
   cors({
-    origin: "http://localhost:3000",
+    origin: true,
     credentials: true,
   })
 );
@@ -49,7 +49,6 @@ app.get("/", (req, res) => {
 });
 
 //포트넘버
-const PORT = 80;
-app.listen(PORT, () => {
+app.listen(80, () => {
   console.log(`server running on port ${PORT}`);
 });
