@@ -36,9 +36,9 @@ app.post("/api/sido", (req, res) => {
 
 //병원정보 api 요청
 app.post("/api/room", (req, res) => {
-  const { page, spclKey } = req.body;
+  const { page, spclKey, count } = req.body;
   console.log("running...");
-  roomData(page, spclKey, ({ room } = {}) => {
+  roomData(page, spclKey, count, ({ room } = {}) => {
     return res.send(room);
   });
 });
