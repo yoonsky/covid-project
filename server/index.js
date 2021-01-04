@@ -49,7 +49,7 @@ app.get("/", (req, res) => {
 });
 
 //포트넘버
-const PORT = 5000;
+const PORT = 80;
 app.listen(PORT, () => {
   console.log(`server running on port ${PORT}`);
 });
